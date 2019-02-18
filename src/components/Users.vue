@@ -1,21 +1,39 @@
-/* eslint-disable */
 <template>
-  <ul v-if="posts && posts.length">
-    <li v-for="post of posts">
-      <p>Posts<p>
+  <div>
+    <div v-if="users && users.length">
+      <div stu v-for="user of users">
+      <Profile
+        :name="user.name"
+        :description="user.description"
+        :avatar="user.avatar"
+        
+      />
       
-    </li>
-  </ul>
+        
+      </div>
+    </div>
 
+    <div v-if="errors && errors.length">
+      <div v-for="error of errors">
+        {{error.message}}
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 import axios from 'axios';
+import Profile from './Profile.vue'
+
 
 export default {
+  components: {
+    Profile,
+    
+  },
   data() {
     return {
-      posts: [],
+      users: [],
       errors: []
     }
   },
@@ -23,12 +41,10 @@ export default {
   created() {
   const params = new URLSearchParams();
   params.append('content-type', 'json');
-	//axios.get('http://jsonplaceholder.typicode.com/posts', params)
-
   axios.get('https://lit-stream-88743.herokuapp.com/users.json',params)
     .then(response => {
       // JSON responses are automatically parsed.
-      this.posts = response.data
+      this.users = response.data
       
     })
     .catch(e => {
