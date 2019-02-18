@@ -11,18 +11,22 @@
       
         
     </div>
+    <div id="settings" class="edit-profile">
+      <p>
+        <input placeholder="Name"/>
+        <button @click="handleClick">Save</button>
+        </p>
+      <p>
+      <input style="margin-top:10px" placeholder="Description"/>
+        <button @click="handleClick">Save</button>
+      </p>
+    </div>
 
-      <a @click="handleClick">Click this!</a>
-
-
-    <div  class="font-awesome">
+    <div  class="font-awesome" @click="toggleSettings">
       <font-awesome-icon icon="cogs" size="2x" pull="left"/>
+    </div>
 
-
-
-      </div>
-
-    <div v-if="errors && errors.length">
+    <div class="settings" v-if="errors && errors.length">
       <div v-for="error of errors">
         {{error.message}}
       </div>
@@ -51,17 +55,28 @@ export default {
     }
   },
     methods: {
-       handleClick: function() {
-      alert('test')
-      var id="1"
-  const params = new URLSearchParams();
-  params.append('content-type', 'json');
-  axios.put('https://lit-stream-88743.herokuapp.com/users/'+id+'.json',params,{data: {name: 'fred'}})
+      handleClick: function() {
+        alert('test')
+        var id="1"
+        const params = new URLSearchParams();
+        params.append('content-type', 'json');
+        axios.put('https://lit-stream-88743.herokuapp.com/users/'+id+'.json',params,{data: {name: 'fred'}})
+  
+    },
+    toggleSettings: function() {
+        
+          var x = document.getElementById("settings");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
   
     }
   },
 
   created() {
+
   var id="1"
   const params = new URLSearchParams();
   params.append('content-type', 'json');
@@ -81,6 +96,18 @@ export default {
 </script>
 
 <style scoped>
+.edit-profile{
+  display: none;
+  
+  margin-left: 65vw;
+  padding-left: 0;
+  left:0;
+  position: absolute;
+  align-items: left;
+
+  margin-top: 15px;
+  
+}
 .container{
 
   display: flex;
@@ -93,11 +120,11 @@ export default {
   height: 300px;
 }
 .font-awesome{
-  left:0;
+  right:10px;
+  position: absolute;
   size: 29em;
   width:50px;
   height: 50px;
   text-align: left;
 }
-
 </style>
