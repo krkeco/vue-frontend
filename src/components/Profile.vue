@@ -73,15 +73,6 @@ export default {
 
   created() {
 
-      const url = 'https://lit-stream-88743.herokuapp.com/users/1';
-      const data = { "name": "123" };
-      const options = {
-        method: 'PUT',
-        headers: { 'content-type': 'application/json' },
-        body: data,
-        url,
-      };
-      axios(options);
 
 
   var id="1"
