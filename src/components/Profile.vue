@@ -12,16 +12,14 @@
         
     </div>
 
-    <form>
-     
-      <div class="field">
-        <label class="label">Name</label>
-        <div class="control">
-          <input class="input" type="text"  />
-        </div>
-      </div>
-    <input class="button is-primary margin-bottom" type="submit" @submit.prevent="processForm" />
-    </form>
+ <form v-on:submit="sub" action="#" method="put">
+
+          <input v-model="login" placeholder="Login">
+          <input v-model="senha" placeholder="Senha">
+          <button type="submit">Entrar</button>
+          
+      </form>
+
     <div  class="font-awesome">
       <font-awesome-icon icon="cogs" size="2x" pull="left"/>
 
@@ -49,6 +47,7 @@ export default {
   },
   data() {
     return {
+
       user: {},
       errors: [],
       name: 'joe',
@@ -57,10 +56,11 @@ export default {
     }
   },
     methods: {
-      processForm: function() {
-        //console.log({ name: this.name, email: this.email });
-        alert('Processing!');
-    }
+      
+      sub: function(event){
+          
+       alert('subt')
+      }
   },
 
   created() {
