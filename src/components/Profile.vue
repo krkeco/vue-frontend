@@ -57,10 +57,8 @@ export default {
     methods: {
       handleClick: function() {
         alert('test')
-        var id="1"
-        const params = new URLSearchParams();
-        params.append('content-type', 'json');
-        axios.put('https://lit-stream-88743.herokuapp.com/users/'+id+'.json',params,{data: {name: 'fred'}})
+        //Not really sure what I have been doing wrong here, but I have tried patch, put, removing cors on the server, making the application an API instead of applicationcontroller, and just about everything I can think of but for some reason the request is coming off as an option instead of put/patch.  If you know how to fix it I would really like to know!
+        axios.patch("https://lit-stream-88743.herokuapp.com/users/1?user[name]=bob&user[description]=friendly&user[avatar]=ping.jpg");
   
     },
     toggleSettings: function() {
@@ -76,11 +74,10 @@ export default {
   },
 
   created() {
-
   var id="1"
   const params = new URLSearchParams();
   params.append('content-type', 'json');
-  axios.get('https://lit-stream-88743.herokuapp.com/users/'+id+'.json',params)
+  axios.get('https://lit-stream-88743.herokuapp.com/users/'+id+'.json')
     .then(response => {
       // JSON responses are automatically parsed.
       this.user = response.data
