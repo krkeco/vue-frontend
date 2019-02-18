@@ -11,8 +11,22 @@
       
         
     </div>
+
+    <form>
+     
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input class="input" type="text"  />
+        </div>
+      </div>
+    <input class="button is-primary margin-bottom" type="submit" @click.prevent="fakeSubmit" />
+    </form>
     <div  class="font-awesome">
       <font-awesome-icon icon="cogs" size="2x" pull="left"/>
+
+
+
       </div>
 
     <div v-if="errors && errors.length">
@@ -33,10 +47,19 @@ export default {
     User,
     
   },
+   methods: {
+    fakeSubmit(){
+      this.showSubmitFeedback = true;
+      
+    }
+  },
   data() {
     return {
       user: {},
-      errors: []
+      errors: [],
+      name: 'joe',
+      description: 'average',
+      avatar: 'nothingspecial.jpg'
     }
   },
 
