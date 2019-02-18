@@ -20,7 +20,7 @@
           <input class="input" type="text"  />
         </div>
       </div>
-    <input class="button is-primary margin-bottom" type="submit"  />
+    <input class="button is-primary margin-bottom" type="submit" @submit.prevent="processForm" />
     </form>
     <div  class="font-awesome">
       <font-awesome-icon icon="cogs" size="2x" pull="left"/>
@@ -54,6 +54,12 @@ export default {
       name: 'joe',
       description: 'average',
       avatar: 'nothingspecial.jpg'
+    }
+  },
+    methods: {
+      processForm: function() {
+        console.log({ name: this.name, email: this.email });
+        alert('Processing!');
     }
   },
 
