@@ -12,7 +12,7 @@
         
     </div>
 
-      <a @click="handleClick">Click me!</a>
+      <a @click="handleClick">Click this!</a>
 
 
     <div  class="font-awesome">
