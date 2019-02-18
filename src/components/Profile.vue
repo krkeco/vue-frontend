@@ -58,7 +58,7 @@ export default {
   },
     methods: {
       processForm: function() {
-        console.log({ name: this.name, email: this.email });
+        //console.log({ name: this.name, email: this.email });
         alert('Processing!');
     }
   },
