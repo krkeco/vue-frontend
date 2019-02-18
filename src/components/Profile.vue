@@ -20,7 +20,7 @@
           <input class="input" type="text"  />
         </div>
       </div>
-    <input class="button is-primary margin-bottom" type="submit" @click.prevent="fakeSubmit" />
+    <input class="button is-primary margin-bottom" type="submit"  />
     </form>
     <div  class="font-awesome">
       <font-awesome-icon icon="cogs" size="2x" pull="left"/>
@@ -46,12 +46,6 @@ export default {
   components: {
     User,
     
-  },
-   methods: {
-    fakeSubmit(){
-      this.showSubmitFeedback = true;
-      
-    }
   },
   data() {
     return {
