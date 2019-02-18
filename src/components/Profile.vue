@@ -53,6 +53,11 @@ export default {
     methods: {
        handleClick: function() {
       alert('test')
+      var id="1"
+  const params = new URLSearchParams();
+  params.append('content-type', 'json');
+  axios.put('https://lit-stream-88743.herokuapp.com/users/'+id+'.json',params,{data: {name: 'fred'}})
+  
     }
   },
 
