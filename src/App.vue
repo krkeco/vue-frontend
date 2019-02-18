@@ -1,9 +1,17 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
 
-    <router-link :to="{ name: 'Profile'}">Profile</router-link>
-    <router-link to="/">Users</router-link>
+    <router-link :to="{ name: 'Profile'}">
+      <button class="button">
+        Profile
+      </button>
+    </router-link>
+    <router-link to="/">
+      <button class="button">
+        Users
+      </button>
+    </router-link>
+    
     <router-view/>
   </div>
 </template>
@@ -19,8 +27,18 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: right;
   color: #2c3e50;
-  margin-top: 60px;
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
 }
 </style>
