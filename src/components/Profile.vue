@@ -12,13 +12,8 @@
         
     </div>
 
- <form v-on:submit="sub" action="#" method="put">
+      <a @click="handleClick">Click me!</a>
 
-          <input v-model="login" placeholder="Login">
-          <input v-model="senha" placeholder="Senha">
-          <button type="submit">Entrar</button>
-          
-      </form>
 
     <div  class="font-awesome">
       <font-awesome-icon icon="cogs" size="2x" pull="left"/>
@@ -56,11 +51,9 @@ export default {
     }
   },
     methods: {
-      
-      sub: function(event){
-          
-       alert('subt')
-      }
+       handleClick: function() {
+      alert('test')
+    }
   },
 
   created() {
