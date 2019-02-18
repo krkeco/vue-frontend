@@ -1,37 +1,71 @@
 <template>
-  <div class="hello">
-    <h1>{{ name }}</h1>
-    <p>{{ description }}</p>
-    <img :src="avatar"/>
-    
+  <div class="container">
+    <div class="user-container" v-if="user">
+      <User
+        :name="user.name"
+        :description="user.description"
+        :avatar="user.avatar"
+      />
+      
+        
+    </div>
+
+    <div v-if="errors && errors.length">
+      <div v-for="error of errors">
+        {{error.message}}
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+import User from './User.vue'
+
+
 export default {
-  name: 'Profile',
-  props: {
-    name: String,
-    description: String,
-    avatar: String
+  components: {
+    User,
+    
+  },
+  data() {
+    return {
+      user: {},
+      errors: []
+    }
+  },
+
+  created() {
+  var id="1"
+  const params = new URLSearchParams();
+  params.append('content-type', 'json');
+  axios.get('https://lit-stream-88743.herokuapp.com/users/'+id+'.json',params)
+    .then(response => {
+      // JSON responses are automatically parsed.
+      this.user = response.data
+      
+    })
+    .catch(e => {
+      alert(e)
+      this.errors.push(e)
+    })
+
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.container{
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+.user-container {
+  width: 60vw;
+  height: 300px;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+  
+
 </style>

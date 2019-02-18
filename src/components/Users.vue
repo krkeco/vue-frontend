@@ -1,15 +1,16 @@
 <template>
-  <div>
-    <div v-if="users && users.length">
+  <div >
+     
+    <div class="container" v-if="users && users.length">
       <div stu v-for="user of users">
-      <Profile
-        :name="user.name"
-        :description="user.description"
-        :avatar="user.avatar"
-        
-      />
-      
-        
+        <div class="user-container">
+       
+          <User
+            :name="user.name"
+            :description="user.description"
+            :avatar="user.avatar"
+          /> 
+        </div>
       </div>
     </div>
 
@@ -23,12 +24,12 @@
 
 <script>
 import axios from 'axios';
-import Profile from './Profile.vue'
+import User from './User.vue'
 
 
 export default {
   components: {
-    Profile,
+    User,
     
   },
   data() {
@@ -55,3 +56,19 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.container{
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+}
+.user-container {
+  width: 45vw;
+  height: 200px;
+}
+  
+
+</style>
